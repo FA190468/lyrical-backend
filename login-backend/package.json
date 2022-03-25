@@ -5,7 +5,7 @@
   "description": "Backend of the login ",
   "main": "index.js",
   "engines": {
-    "node": "50.x"
+    "node": "50.9"
    },
   "scripts": {
     "start": "nodemon server.js",
