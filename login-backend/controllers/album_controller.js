@@ -19,7 +19,7 @@ const getAllAlbums = (req, res) => {
 
 
 const addAlbum = (req, res) => {
-    let albumgData = req.body
+    let albumData = req.body
 
     Album.create(albumData)
     .then((data) => {

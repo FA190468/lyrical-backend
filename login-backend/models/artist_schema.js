@@ -1,28 +1,28 @@
 const {Schema, model } = require('mongoose')
 
-const albumSchema = new Schema({
+const artistSchema = new Schema({
 name: {
     type: String,
     required: [true, 'Title field is required']
 },
 
-alias: {
+age: {
     type: String,
 },
 
-country: {
+alias: {
     type: String,
     required: [true, 'Title field is required']
 },
 
-release: {
+country: {
     type: [Schema.Types.ObjectId],
-    ref: "Release",
-    required: [true, 'release field is required'], 
+    ref: "country",
+    required: [true, 'Country field is required'], 
   }
 }, {
     timestamps: true
 
 })
 
-module.exports = model('Album', albumSchema)
+module.exports = model('Artist', artistSchema)

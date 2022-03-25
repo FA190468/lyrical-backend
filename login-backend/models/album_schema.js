@@ -14,10 +14,10 @@ title: {
     required: [true, 'Title field is required']
 },
 
-release: {
+date: {
     type: [Schema.Types.ObjectId],
-    ref: "Release",
-    required: [true, 'release field is required'], 
+    ref: "Date",
+    required: [true, 'date field is required'], 
   }
 }, {
     timestamps: true

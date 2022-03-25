@@ -1,28 +1,29 @@
 const {Schema, model } = require('mongoose')
 
 const songSchema = new Schema({
-title: {
+description: {
     type: String,
     required: [true, 'title field is required']
 },
 
-artist: {
+title: {
     type: String,
     required: [true, 'artist field is required']
 },
 
-album: {
+lenght: {
     type: [String]
     
 },
 
-lenght: {
+year: {
     type: [String]
 
 },
 
-year: {
-    type: [String]
+lyrics: {
+    type: String,
+    required: [true, 'artist field is required']
 
 }
 

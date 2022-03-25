@@ -1,7 +1,7 @@
 {
   "name": "lyrical-backend",
   "version": "1.0.0",
-  "description": "Backend of the login application",
+  "description": "Backend of the login ",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
