@@ -25,7 +25,12 @@ lyrics: {
     type: String,
     required: [true, 'artist field is required']
 
-}
+},
+album: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Album',
+    required: [true, 'Album field is required']
+  },
 
 })
 

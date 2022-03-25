@@ -6,8 +6,9 @@ require('./db')
 const { getAllSongs, getSingleSong, addSong } = require('./controllers/song_controller')
 const { getAllAlbums, addAlbum, editAlbum } = require('./controllers/album_controller')
 const { getAllArtists, addArtist, editArtist } = require('./controllers/artist_controller')
-const { getAllReleases } = require('./controllers/release_controller')
+const { getAllPlaylists, addPlaylist, editPlaylist } = require('./controllers/playlist_controller')
 const { register, login, loginRequired } = require('./controllers/user_controller')
+
 
 //import controller here
 
@@ -50,8 +51,10 @@ app.post('/artist', addArtist)
 app.put('/artist/:id', editArtist)
 //////////////
 
-////RELEASE ROUTES////
-app.get('/release', getAllReleases)
+////PLAYLIST ROUTES////
+app.get('/playlist', getAllPlaylists)
+app.post('/playlist', addPlaylist)
+app.put('/playlist/:id', editPlaylist)
 //////////////
 
 ////USER ROUTES

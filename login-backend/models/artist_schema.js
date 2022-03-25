@@ -19,6 +19,11 @@ country: {
     type: [Schema.Types.ObjectId],
     ref: "country",
     required: [true, 'Country field is required'], 
+  },
+  album: {
+      type: Schema.Types.ObjectId,
+      ref: "Album",
+      required: [true, 'Album field is required']
   }
 }, {
     timestamps: true

@@ -1,5 +1,6 @@
 const {Schema, model } = require('mongoose')
 
+
 // function to check email validation
 let validateEmail = function(email) {
     let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

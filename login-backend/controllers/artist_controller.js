@@ -1,8 +1,8 @@
 const Artist = require('../models/artist_schema')
+const Album = require('../models/album_schema')
 
 const getAllArtists = (req, res) => {
-    //find = findall findOne = just one findById = obvious
-    Artist.find()
+    Artist.find().populate('Album')
         .then((data) => {
             if(data){
              res.status(200).json(data)   
@@ -46,6 +46,15 @@ const editArtist = (req, res) => {
     })
     .then((data) => {
         if(data){
+            Album.findByIdAndUpdate({
+                _id: data.album
+            },{
+                $push: { artist: data._id }
+            }, (error, success) => {
+                if (error) {
+                    res.status(500).json(err)
+                }
+            })
             res.status(201).json(data)
         }
     })

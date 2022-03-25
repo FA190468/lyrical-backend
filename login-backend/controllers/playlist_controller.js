@@ -1,13 +1,15 @@
-const Album = require('../models/album_schema')
+const Playlist = require('../models/playlist_schema')
+const User = require('../models/user_schema')
 
-const getAllAlbums = (req, res) => {
-    Album.find().populate('artist')
+const getAllPlaylists = (req, res) => {
+    //find = findall findOne = just one findById = obvious
+    Playlist.find().populate('User')
         .then((data) => {
             if(data){
              res.status(200).json(data)   
         }
              else {
-             res.status(404).json("No album found")
+             res.status(404).json("No artist found")
         }
     })
     .catch((err) => {
@@ -16,11 +18,10 @@ const getAllAlbums = (req, res) => {
     })
 }
 
+const addPlaylist = (req, res) => {
+    let playlistData = req.body
 
-const addAlbum = (req, res) => {
-    let albumData = req.body
-
-    Album.create(albumData)
+    Playlist.create(playlistData)
     .then((data) => {
         if(data){
             res.status(201).json(data)
@@ -37,10 +38,10 @@ const addAlbum = (req, res) => {
     })
 }
 
-const editAlbum = (req, res) => {
-    let albumData = req.body
+const editPlaylist = (req, res) => {
+    let playlistData = req.body
 
-    Album.findByIdAndUpdate(req.params.id, albumData, {
+    Playlist.findByIdAndUpdate(req.params.id, playlistData, {
         new: true
     })
     .then((data) => {
@@ -60,7 +61,7 @@ const editAlbum = (req, res) => {
 }
 
 module.exports = {
-    getAllAlbums,
-    addAlbum,
-    editAlbum
+    getAllPlaylists,
+    addPlaylist,
+    editPlaylist
 }

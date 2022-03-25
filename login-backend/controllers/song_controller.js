@@ -1,8 +1,8 @@
 const Song = require('../models/song_schema')
-
+const Album = require('../models/album_schema')
 const getAllSongs = (req, res) => {
     //find = findall findOne = just one findById = obvious
-    Song.find()
+    Song.find().populate('Album')
         .then((data) => {
             if(data){
              res.status(200).json(data)   

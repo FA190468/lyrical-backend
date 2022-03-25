@@ -15,10 +15,15 @@ title: {
 },
 
 date: {
-    type: [Schema.Types.ObjectId],
-    ref: "Date",
-    required: [true, 'date field is required'], 
-  }
+    type: String,
+    
+  },
+
+  artist: {
+    type: Schema.Types.ObjectId, //array = ManyToMany
+    ref: 'Artist',
+    required: [true, 'Artist field is required']
+  },
 }, {
     timestamps: true
 
