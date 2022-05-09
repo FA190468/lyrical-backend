@@ -1,11 +1,11 @@
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
-require('./db')
+require('./db')()
 
 const { getAllSongs, getSingleSong, addSong } = require('./controllers/song_controller')
-const { getAllAlbums, addAlbum, editAlbum } = require('./controllers/album_controller')
-const { getAllArtists, addArtist, editArtist } = require('./controllers/artist_controller')
+const { getAllAlbums, addAlbum,getSingleAlbum, editAlbum } = require('./controllers/album_controller')
+const { getAllArtists, addArtist, getSingleArtist, editArtist } = require('./controllers/artist_controller')
 const { getAllPlaylists, addPlaylist, editPlaylist } = require('./controllers/playlist_controller')
 const { register, login, loginRequired } = require('./controllers/user_controller')
 
@@ -34,27 +34,30 @@ if(req.headers && req.headers.authorization && req.headers.authorization.split('
 
 
 ////SONG ROUTES////
-app.get('/songs', getAllSongs)
-app.get('/songs/:id', loginRequired, getSingleSong)
-app.post('/songs', addSong)
+app.get('/song', getAllSongs)
+app.get('/song/:_id', loginRequired, getSingleSong)
+app.post('/song', addSong)
 //////////////
 
 ////ALBUM ROUTES////
 app.get('/album', getAllAlbums)
 app.post('/album', addAlbum)
-app.put('/album/:id', editAlbum)
+app.get('/album:_id', getSingleAlbum)
+app.put('/album/:_id', editAlbum)
 //////////////
 
 ////ARTIST ROUTES////
 app.get('/artist', getAllArtists)
 app.post('/artist', addArtist)
-app.put('/artist/:id', editArtist)
+app.get('/artist/:_id', getSingleArtist)
+//app.get('/artist/_id/:alias', getArtistAlias)
+app.put('/artist/:_id', editArtist)
 //////////////
 
 ////PLAYLIST ROUTES////
 app.get('/playlist', getAllPlaylists)
 app.post('/playlist', addPlaylist)
-app.put('/playlist/:id', editPlaylist)
+app.put('/playlist/:_id', editPlaylist)
 //////////////
 
 ////USER ROUTES

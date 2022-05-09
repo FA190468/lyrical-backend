@@ -7,6 +7,7 @@ year: {
 
 genre: {
     type: String,
+    required: [true, 'Title field is required']
 },
 
 title: {
@@ -19,7 +20,12 @@ date: {
     
   },
 
-  artist: {
+cover: {
+    type: String,
+    required: [true, 'Cover picture link is required']
+    },
+
+artist: {
     type: Schema.Types.ObjectId, //array = ManyToMany
     ref: 'Artist',
     required: [true, 'Artist field is required']

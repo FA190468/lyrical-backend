@@ -3,7 +3,7 @@ const User = require('../models/user_schema')
 
 const getAllPlaylists = (req, res) => {
     //find = findall findOne = just one findById = obvious
-    Playlist.find().populate('User')
+    Playlist.find().populate('user')
         .then((data) => {
             if(data){
              res.status(200).json(data)   
@@ -41,7 +41,7 @@ const addPlaylist = (req, res) => {
 const editPlaylist = (req, res) => {
     let playlistData = req.body
 
-    Playlist.findByIdAndUpdate(req.params.id, playlistData, {
+    Playlist.findByIdAndUpdate(req.params._id, playlistData, {
         new: true
     })
     .then((data) => {

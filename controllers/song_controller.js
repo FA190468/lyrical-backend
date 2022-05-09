@@ -2,7 +2,7 @@ const Song = require('../models/song_schema')
 const Album = require('../models/album_schema')
 const getAllSongs = (req, res) => {
     //find = findall findOne = just one findById = obvious
-    Song.find().populate('Album')
+    Song.find().populate('album')
         .then((data) => {
             if(data){
              res.status(200).json(data)   
@@ -19,13 +19,13 @@ const getAllSongs = (req, res) => {
 
 const getSingleSong = (req, res) => {
 
-    Project.findById(req.params.id)
+    Song.findById(req.params._id)
     .then((data) => {
         if(data){
             res.status(200).json(data)   
        }
             else {
-            res.status(404).json(`Project with id: ${req.params.id} not found`)
+            res.status(404).json(`Song with id: ${req.params._id} not found`)
        }
     })
     .catch((err) => {

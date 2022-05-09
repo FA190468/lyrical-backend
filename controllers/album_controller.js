@@ -37,10 +37,27 @@ const addAlbum = (req, res) => {
     })
 }
 
+const getSingleAlbum = (req, res) => {
+
+    Album.findById(req.params._id)
+    .then((data) => {
+        if(data){
+            res.status(200).json(data)   
+       }
+            else {
+            res.status(404).json(`Album with id: ${req.params._id} not found`)
+       }
+    })
+    .catch((err) => {
+        console.error(err)
+        res.status(500).json(err)
+        })
+}
+
 const editAlbum = (req, res) => {
     let albumData = req.body
 
-    Album.findByIdAndUpdate(req.params.id, albumData, {
+    Album.findByIdAndUpdate(req.params._id, albumData, {
         new: true
     })
     .then((data) => {
@@ -62,5 +79,6 @@ const editAlbum = (req, res) => {
 module.exports = {
     getAllAlbums,
     addAlbum,
+    getSingleAlbum,
     editAlbum
 }

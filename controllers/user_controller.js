@@ -1,12 +1,16 @@
 const User = require('../models/user_schema')
+const bcrypt = require('bcryptjs')
 
 const register = (req, res) => {
-  let newUser = new User(req.body)
+  let newUser = new User(req.body) 
+
   //save user to db 
   newUser.password = bcrypt.hashSync(req.body.password, 10)
 
+  console.log(newUser);
   newUser.save((err, user) => {
     if(err) {
+        console.log(err)
         return res.status(400).send({
             message: err
         })
@@ -48,7 +52,7 @@ const loginRequired = (req, res, next) => {
     }
     else {
         return res.status(401).json({
-            message: 'Unauthorizes user'
+            message: 'Unauthorized user'
         })
     }
 }

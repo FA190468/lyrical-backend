@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const init = () => {
 mongoose.set('debug', true)
 
-mongoose.connect('process.env.DB_ATLAS_URL', {
+mongoose.connect(process.env.DB_ATLAS_URL, {
     useNewUrlParser: true,
     //createIndexes: true,
     
@@ -13,11 +13,9 @@ mongoose.connect('process.env.DB_ATLAS_URL', {
      process.exit(1);
  })
 
- mongoose.connection.on.apply('open', () => {
+ mongoose.connection.on('open', () => {
      console.log('connected to database')
  })
-
-
 }
 
 mongoose.Promise = global.Promise

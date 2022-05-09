@@ -24,7 +24,16 @@ country: {
       type: Schema.Types.ObjectId,
       ref: "Album",
       required: [true, 'Album field is required']
-  }
+  },
+  country: {
+    type: [Schema.Types.ObjectId],
+    ref: "country",
+    required: [true, 'Country field is required'], 
+  },
+  picture: {
+    type: String,
+    required: [true, 'Picture link is required']
+    },
 }, {
     timestamps: true
 

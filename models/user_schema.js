@@ -7,12 +7,10 @@ let validateEmail = function(email) {
     return re.test(email)
 };
 
-
 const userSchema = new Schema({
 username: {
     type: String,
     trim:true,
-    required: [true, 'Username field is required']
 },
 
 email: {
@@ -44,7 +42,7 @@ password: {
 })
 
 userSchema.methods.comparePassword = function(password){
-return bcrypt.compareSync(password, this.password, this.password, function(result) {
+return bcrypt.compareSync(password, this.password, function(result) {
     return result
 })
 }

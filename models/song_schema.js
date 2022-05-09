@@ -29,7 +29,7 @@ lyrics: {
 album: {
     type: [Schema.Types.ObjectId],
     ref: 'Album',
-    required: [true, 'Album field is required']
+    //required: [true, 'Album field is required']
   },
 
 })
